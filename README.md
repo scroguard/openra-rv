@@ -1,8 +1,8 @@
 [![Check for new OpenRA release and build docker image](https://github.com/dkruyt/openra/actions/workflows/main.yml/badge.svg)](https://github.com/dkruyt/openra/actions/workflows/main.yml) [![1] ![2]](https://github.com/dkruyt/openra/pkgs/container/openra)
 
-# 🎮 OpenRA Dedicated Server Docker Image
+# 🎮 OpenRA - Romanov's Vengeance - Dedicated Server Docker Image
 
-This repository contains the Dockerfile and associated resources needed to build a Docker image for OpenRA, a real-time strategy game engine.
+This repository contains the Dockerfile and associated resources needed to build a Docker image for Romanov's Vengeance, a real-time strategy game engine.
 
 The Dockerfile builds from mono, is optimized for multi-architecture builds, and includes all tools and libraries necessary to run an OpenRA Dedicated Server instance.
 
