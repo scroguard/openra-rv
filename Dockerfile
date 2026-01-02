@@ -4,7 +4,7 @@ FROM mono AS builder
 ARG OPENRA_RELEASE_VERSION
 ENV OPENRA_RELEASE_VERSION=${OPENRA_RELEASE_VERSION}
 ARG OPENRA_RELEASE_TYPE=release
-ARG OPENRA_RELEASE=https://github.com/OpenRA/OpenRA/releases/download/${OPENRA_RELEASE_TYPE}-${OPENRA_RELEASE_VERSION}/OpenRA-${OPENRA_RELEASE_TYPE}-${OPENRA_RELEASE_VERSION}-source.tar.bz2
+ARG OPENRA_RELEASE=https://github.com/OpenRA/ra2/archive/master.zip
 
 RUN apt-get update && \
     apt-get -y upgrade && \
@@ -20,7 +20,7 @@ RUN apt-get update && \
             wget
 RUN useradd -d /home/openra -m -s /sbin/nologin openra && \
     mkdir -p /home/openra/source /home/openra/lib/openra && \
-    curl -L $OPENRA_RELEASE | tar xj -C /home/openra/source && \
+    curl -L $OPENRA_RELEASE | unzip -d /home/openra/source && \
     cd /home/openra/source && make all RUNTIME=mono && \
     mv /home/openra/source/* /home/openra/lib/openra
 
@@ -41,10 +41,10 @@ VOLUME ["/home/openra/.openra"]
 
 CMD ["/home/openra/lib/openra/launch-dedicated.sh"]
 
-LABEL org.opencontainers.image.title="OpenRA dedicated server" \
-      org.opencontainers.image.description="Image to run a server instance for OpenRA" \
-      org.opencontainers.image.url="https://github.com/dkruyt/openra" \
-      org.opencontainers.image.documentation="https://github.com/dkruyt/openra#readme" \
+LABEL org.opencontainers.image.title="OpenRA Romanov's Revenge dedicated server" \
+      org.opencontainers.image.description="Image to run a server instance for Romanov's Revenge" \
+      org.opencontainers.image.url="https://github.com/scroguard/openra-rv#readme" \
+      org.opencontainers.image.documentation="https://github.com/scroguard/openra-rv#readme" \
       org.opencontainers.image.version="$OPENRA_RELEASE_VERSION" \
       org.opencontainers.image.licenses="GPL-3.0" \
-      org.opencontainers.image.authors="Dennis Kruyt"
+      org.opencontainers.image.authors="Justin Albrecht"
